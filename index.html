@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device, initial-scale=1.0">
+        <title>Schedule</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <table border="2px">
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                    <td><input type="checkbox" class="checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            // Function to save checkbox states to localStorage
+            function saveCheckboxStates() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    localStorage.setItem(checkbox.id, checkbox.checked);
+                });
+            }
+        
+            // Function to load checkbox states from localStorage
+            function loadCheckboxStates() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    const storedValue = localStorage.getItem(checkbox.id);
+                    if (storedValue !== null) {
+                        checkbox.checked = (storedValue === "true");
+                    }
+                });
+            }
+        
+            // Load checkbox states when the page loads
+            window.addEventListener('load', loadCheckboxStates);
+        
+            // Save checkbox states when a checkbox is clicked
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('click', saveCheckboxStates);
+            });
+        </script>
+        
+    </body>
+</html>
